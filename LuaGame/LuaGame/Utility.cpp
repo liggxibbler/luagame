@@ -15,25 +15,6 @@ function split(s, d)
 	end
 	return t
 end
-
-ghost =
-{
-	FirstComponent = 
-	{
-		pos =
-		{
-			x = 12.0,
-			y = 1.5,
-			z = 4.75			
-		}
-	},
-	
-	SecondComponent = 
-	{
-		name = "Frederick",
-		path = "C:/"
-	}
-}
 )";
 
 		int res = luaL_dostring(L, cmd.c_str());
@@ -124,5 +105,12 @@ ghost =
 			std::cout << "Error: Attempting to retrieve non-number as number" << std::endl;
 		}
 		return lua_tostring(L, -1);
+	}
+
+	void LoadScript(lua_State* L, std::string scriptPath)
+	{
+		int res = luaL_dofile(L, scriptPath.c_str());
+		if (res != 0)
+			std::cout << "Failed to load script " << scriptPath.c_str() << ". Error: " << lua_tostring(L, -1);
 	}
 }

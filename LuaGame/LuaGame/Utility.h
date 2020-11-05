@@ -1,14 +1,14 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
+
 extern "C"
 {
 	#include "lua.h"
 	#include "lauxlib.h"
 	#include "lualib.h"
 }
-
-#include <iostream>
-#include <vector>
 
 namespace Utility
 {
@@ -18,4 +18,6 @@ namespace Utility
 	
 	float GetNumber(lua_State* L, std::string varName);
 	std::string GetString(lua_State* L, std::string varName);
+
+	void LoadScript(lua_State* L, std::string scriptPath);
 }
