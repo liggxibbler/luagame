@@ -1,8 +1,17 @@
 ghost =
 {
+	Transform = 
+	{
+		position =
+		{
+			x = 1,
+			y = 5,
+			z = 12
+		}
+	},
 	FirstComponent = 
 	{
-		pos =
+		position =
 		{
 			x = 12.0,
 			y = 1.5,
