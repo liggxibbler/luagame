@@ -2,8 +2,8 @@
 
 #include "Utility.h"
 
-#include <iostream>
 #include <string>
+#include <iostream>
 #include <vector>
 
 int main()
@@ -15,7 +15,7 @@ int main()
 	Utility::LoadScript(L, "ghost.lua");
 
 
-	float ret = Utility::GetNumber(L, "ghost.FirstComponent.pos.z");
+	double ret = Utility::GetNumber(L, "ghost.FirstComponent.pos.z");
 	std::cout << "value of ghost.FirstComponent.pos.z is " << ret << std::endl;
 
 	auto name = Utility::GetString(L, "ghost.SecondComponent.name");

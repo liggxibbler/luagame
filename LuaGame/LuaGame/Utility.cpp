@@ -87,7 +87,7 @@ end
 		}
 	}
 
-	float GetNumber(lua_State* L, std::string varName)
+	double GetNumber(lua_State* L, std::string varName)
 	{
 		GetVariableOnStack(L, varName.c_str());
 		if (!lua_isnumber(L, -1))
@@ -111,6 +111,6 @@ end
 	{
 		int res = luaL_dofile(L, scriptPath.c_str());
 		if (res != 0)
-			std::cout << "Failed to load script " << scriptPath.c_str() << ". Error: " << lua_tostring(L, -1);
+			std::cout << "Failed to load script " << scriptPath << ". Error: " << lua_tostring(L, -1);
 	}
 }
