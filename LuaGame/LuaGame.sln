@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaGame", "LuaGame\LuaGame.vcxproj", "{24917CE2-389C-41A7-895D-7EE552490C99}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FSM2", "FSM2\FSM2.vcxproj", "{EB2622B2-A384-43BF-B16C-EA743B518811}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{24917CE2-389C-41A7-895D-7EE552490C99}.Release|x64.Build.0 = Release|x64
 		{24917CE2-389C-41A7-895D-7EE552490C99}.Release|x86.ActiveCfg = Release|Win32
 		{24917CE2-389C-41A7-895D-7EE552490C99}.Release|x86.Build.0 = Release|Win32
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Debug|x64.ActiveCfg = Debug|x64
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Debug|x64.Build.0 = Debug|x64
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Debug|x86.ActiveCfg = Debug|Win32
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Debug|x86.Build.0 = Debug|Win32
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Release|x64.ActiveCfg = Release|x64
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Release|x64.Build.0 = Release|x64
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Release|x86.ActiveCfg = Release|Win32
+		{EB2622B2-A384-43BF-B16C-EA743B518811}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
