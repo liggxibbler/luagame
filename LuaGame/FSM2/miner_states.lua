@@ -66,3 +66,9 @@ States =
 		end
 	}
 }
+
+stan = Game.Miner("Stan")
+stan:GetFSM():SetState(States.GoHome)
+for i = 1, 10 do
+	stan:Update()
+end

@@ -18,23 +18,23 @@ int main()
 		return -2;
 	}
 
-	Miner stan("Stan");
+	//Miner stan("Stan");
+	//
+	//auto states = luabridge::getGlobal(L, "States");
+	//stan.GetFSM()->SetState(states["GoHome"]);
+	//
+	//for (int i = 0; i < 10; ++i)
+	//{
+	//	try
+	//	{
+	//		stan.Update();
+	//	}
+	//	catch (luabridge::LuaException e)
+	//	{
+	//		std::cout << "Failed to update: " << e.what() << std::endl;
+	//	}
+	//}
 
-	auto states = luabridge::getGlobal(L, "States");
-	stan.GetFSM()->SetState(states["GoHome"]);
-
-	for (int i = 0; i < 10; ++i)
-	{
-		try
-		{
-			stan.Update();
-		}
-		catch (luabridge::LuaException e)
-		{
-			std::cout << "Failed to update: " << e.what() << std::endl;
-		}
-	}
-
-	lua_close(L);
+	//lua_close(L);
 	return 0;
 }

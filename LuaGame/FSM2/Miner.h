@@ -11,7 +11,7 @@ private:
 	int m_fatigue;
 public:
 
-	Miner(std::string name) : Entity(name)
+	Miner(std::string name) : Entity(name), m_gold(0), m_fatigue(0)
 	{
 		m_stateMachine = new StateMachine<Miner>(this);
 	}
