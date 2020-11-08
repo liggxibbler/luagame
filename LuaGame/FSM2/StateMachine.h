@@ -14,6 +14,9 @@ private:
 public:
 
     StateMachine(entity_type* owner) :m_pOwner(owner), m_CurrentState(nullptr) {}
+    ~StateMachine()
+    {        
+    }
 
     void SetState(const luabridge::LuaRef& s) { m_CurrentState = s; }
 

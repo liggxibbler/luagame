@@ -39,11 +39,7 @@ States =
 		end,
 	
 		Exit = function(miner)
-			if miner == nil then
-				print (name .. "miner is nil")
-			else
-				print ("[Lua]: Miner " .. miner:Name() .." is feelin' mighty refreshed!")	
-			end
+			print ("[Lua]: Miner " .. miner:Name() .." is feelin' mighty refreshed!")
 		end
 	},
 
@@ -61,17 +57,12 @@ States =
 
 			if miner:GetGold() > 4 then
 				print ("[Lua]: Miner " .. miner:Name() .. " decides to go home, with his pockets full of nuggets")
-				miner:GetFSM():ChangeState(States.GoHome)
-				print ("TEST")
+				miner:GetFSM():ChangeState(States.GoHome)				
 			end
 		end,
 
 		Exit = function(miner)
-			if miner == nil then
-				print (name .. "miner is nil")
-			else
-				print ("[Lua]: Miner " .. miner:Name() .. " exits gold mine")
-			end
+			print ("[Lua]: Miner " .. miner:Name() .. " exits gold mine")			
 		end
 	}
 }
