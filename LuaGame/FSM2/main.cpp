@@ -25,7 +25,14 @@ int main()
 
 	for (int i = 0; i < 10; ++i)
 	{
-		stan.Update();
+		try
+		{
+			stan.Update();
+		}
+		catch (luabridge::LuaException e)
+		{
+			std::cout << "Failed to update: " << e.what() << std::endl;
+		}
 	}
 
 	lua_close(L);

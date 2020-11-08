@@ -21,7 +21,7 @@ public:
     {
         if (!m_CurrentState.isNil() && m_CurrentState.isTable())
         {
-            m_CurrentState["Execute"](m_pOwner);
+            m_CurrentState["Execute"](m_pOwner);            
         }
     }
 

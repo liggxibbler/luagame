@@ -61,7 +61,7 @@ States =
 
 			if miner:GetGold() > 4 then
 				print ("[Lua]: Miner " .. miner:Name() .. " decides to go home, with his pockets full of nuggets")
-				miner:getFSM():ChangeState(States.GoHome)
+				miner:GetFSM():ChangeState(States.GoHome)
 				print ("TEST")
 			end
 		end,
