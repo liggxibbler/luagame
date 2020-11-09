@@ -18,6 +18,9 @@
     <None Include="miner_states.lua">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="test_component.lua">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

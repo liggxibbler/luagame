@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="miner_states.lua" />
+    <None Include="test_component.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

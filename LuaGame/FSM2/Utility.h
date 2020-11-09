@@ -2,6 +2,7 @@
 
 #include "StateMachine.h"
 #include "Miner.h"
+#include <map>
 
 void RegisterStateMachineWithLua(lua_State* L)
 {
@@ -43,3 +44,24 @@ void RegisterMinerWithLua(lua_State* L)
             .endClass()
         .endNamespace();
 }
+
+static std::map<std::string, luabridge::LuaRef> base_classes;
+static std::map<std::string, luabridge::LuaRef> new_funcs;
+
+luabridge::LuaRef GetLuaClassNew(lua_State* L, std::string className)
+{
+    if (base_classes.find(className) == base_classes.end())
+    {
+        auto theClass = luabridge::getGlobal(L, className.c_str());
+        base_classes.insert(std::make_pair(className, theClass));
+        new_funcs.insert(std::make_pair(className, theClass["new"]));
+    }
+    return new_funcs.at(className);
+}
+
+luabridge::LuaRef LuaNew(lua_State* L, std::string className)
+{
+    auto new_ = GetLuaClassNew(L, className);
+    return new_(base_classes.at(className));
+}
+
