@@ -5,28 +5,30 @@
 
 #include <string>
 
-class Entity
+namespace Buckland
 {
+	class Entity
+	{
 
-private:
+	private:
 
-	int m_id;
-	std::string m_name;
+		int m_id;
+		std::string m_name;
 
-	//used by the constructor to give each entity a unique ID
-	int NextValidID() { static int NextID = 0; return NextID++; }
+		//used by the constructor to give each entity a unique ID
+		int NextValidID() { static int NextID = 0; return NextID++; }
 
-public:
+	public:
 
-	Entity(std::string name = "NoName") :m_id(NextValidID()), m_name(name) {}
+		Entity(std::string name = "NoName") :m_id(NextValidID()), m_name(name) {}
 
-	virtual ~Entity() {}
+		virtual ~Entity() {}
 
-	//all entities must implement an update function
-	virtual void Update() = 0;
+		//all entities must implement an update function
+		virtual void Update() = 0;
 
-	//accessors
-	int         ID()const { return m_id; }
-	std::string Name()const { return m_name; }
-};
-
+		//accessors
+		int         ID()const { return m_id; }
+		std::string Name()const { return m_name; }
+	};
+}

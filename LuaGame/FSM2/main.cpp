@@ -22,9 +22,9 @@ int main()
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	RegisterEntityWithLua(L);
-	RegisterMinerWithLua(L);
-	RegisterStateMachineWithLua(L);
+	 Buckland::RegisterEntityWithLua(L);
+	 Buckland::RegisterMinerWithLua(L);
+	 Buckland::RegisterStateMachineWithLua(L);
 
 	LUA_CHECK(L, luaL_dofile, "main.lua");
 	

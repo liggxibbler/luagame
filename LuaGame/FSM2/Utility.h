@@ -4,45 +4,48 @@
 #include "Miner.h"
 #include <unordered_map>
 
-void RegisterStateMachineWithLua(lua_State* L)
+namespace Buckland
 {
-    luabridge::getGlobalNamespace(L)
-        .beginNamespace("Game")
+    void RegisterStateMachineWithLua(lua_State* L)
+    {
+        luabridge::getGlobalNamespace(L)
+            .beginNamespace("Game")
             .beginClass<StateMachine<Miner>>("StateMachine")
-                .addFunction("ChangeState", &StateMachine<Miner>::ChangeState)
-                .addFunction("GetState", &StateMachine<Miner>::GetState)
-                .addFunction("SetState", &StateMachine<Miner>::SetState)
+            .addFunction("ChangeState", &StateMachine<Miner>::ChangeState)
+            .addFunction("GetState", &StateMachine<Miner>::GetState)
+            .addFunction("SetState", &StateMachine<Miner>::SetState)
             .endClass()
-        .endNamespace();
-}
+            .endNamespace();
+    }
 
-void RegisterEntityWithLua(lua_State* L)
-{
-    luabridge::getGlobalNamespace(L)
-        .beginNamespace("Game")
+    void RegisterEntityWithLua(lua_State* L)
+    {
+        luabridge::getGlobalNamespace(L)
+            .beginNamespace("Game")
             .beginClass<Entity>("Entity")
-                .addFunction("Name", &Entity::Name)
-                .addFunction("ID", &Entity::ID)
+            .addFunction("Name", &Entity::Name)
+            .addFunction("ID", &Entity::ID)
             .endClass()
-        .endNamespace();
-}
+            .endNamespace();
+    }
 
-void RegisterMinerWithLua(lua_State* L)
-{
-    luabridge::getGlobalNamespace(L)
-        .beginNamespace("Game")
+    void RegisterMinerWithLua(lua_State* L)
+    {
+        luabridge::getGlobalNamespace(L)
+            .beginNamespace("Game")
             .deriveClass<Miner, Entity>("Miner")
-                .addConstructor<void (*) (std::string)>()
-                .addFunction("GetGold", &Miner::GetGold)
-                .addFunction("SetGold", &Miner::SetGold)
-                .addFunction("AddGold", &Miner::AddGold)
-                .addFunction("Fatigued", &Miner::Fatigued)
-                .addFunction("DecreaseFatigue", &Miner::DecreaseFatigue)
-                .addFunction("IncreaseFatigue", &Miner::IncreaseFatigue)
-                .addFunction("GetFSM", &Miner::GetFSM)
-                .addFunction("Update", &Miner::Update)
+            .addConstructor<void (*) (std::string)>()
+            .addFunction("GetGold", &Miner::GetGold)
+            .addFunction("SetGold", &Miner::SetGold)
+            .addFunction("AddGold", &Miner::AddGold)
+            .addFunction("Fatigued", &Miner::Fatigued)
+            .addFunction("DecreaseFatigue", &Miner::DecreaseFatigue)
+            .addFunction("IncreaseFatigue", &Miner::IncreaseFatigue)
+            .addFunction("GetFSM", &Miner::GetFSM)
+            .addFunction("Update", &Miner::Update)
             .endClass()
-        .endNamespace();
+            .endNamespace();
+    }
 }
 
 static std::unordered_map<std::string, luabridge::LuaRef> base_classes;
