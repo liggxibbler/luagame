@@ -144,8 +144,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="main.lua" />
     <None Include="miner_states.lua" />
     <None Include="test_component.lua" />
+    <None Include="utility.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

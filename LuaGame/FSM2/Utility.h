@@ -2,7 +2,7 @@
 
 #include "StateMachine.h"
 #include "Miner.h"
-#include <map>
+#include <unordered_map>
 
 void RegisterStateMachineWithLua(lua_State* L)
 {
@@ -45,8 +45,8 @@ void RegisterMinerWithLua(lua_State* L)
         .endNamespace();
 }
 
-static std::map<std::string, luabridge::LuaRef> base_classes;
-static std::map<std::string, luabridge::LuaRef> new_funcs;
+static std::unordered_map<std::string, luabridge::LuaRef> base_classes;
+static std::unordered_map<std::string, luabridge::LuaRef> new_funcs;
 
 luabridge::LuaRef GetLuaClassNew(lua_State* L, std::string className)
 {

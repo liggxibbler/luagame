@@ -28,3 +28,5 @@ end
 classA.update = function(self)    
     self.x = -self.x    
 end
+
+return classA

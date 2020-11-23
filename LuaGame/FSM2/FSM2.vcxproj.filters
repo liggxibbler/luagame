@@ -13,13 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Lua">
+      <UniqueIdentifier>{7eb26743-9db8-4b3f-8e1a-bdaa89e11a6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="miner_states.lua">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Lua</Filter>
     </None>
     <None Include="test_component.lua">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Lua</Filter>
+    </None>
+    <None Include="utility.lua">
+      <Filter>Source Files\Lua</Filter>
+    </None>
+    <None Include="main.lua">
+      <Filter>Source Files\Lua</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
