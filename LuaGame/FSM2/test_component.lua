@@ -1,14 +1,4 @@
 classA = {}
-classA.x = 1
-
-classA.getX = function(self)
-    return self.x
-end
-
-classA.setX = function(self, val)
-    print("setting x to " .. val)
-    self.x = val
-end
 
 classA.new = function(self, obj)
     obj = obj or {}
@@ -17,16 +7,18 @@ classA.new = function(self, obj)
     return obj
 end
 
-classA.setEntity = function(self, e)
-    self.entity = e
-end
-
-classA.getEntity = function(self)
-    return self.e
-end
-
 classA.update = function(self)    
-    self.x = -self.x    
+    if Input:GetMouseEvent() then        
+        x = tostring(Input:GetMouseX())
+        y = tostring(Input:GetMouseY())
+        buttons = {
+            x=Input:GetMouseButton(0),
+            y=Input:GetMouseButton(1),
+            z=Input:GetMouseButton(2)
+        }
+        
+        print ("Mouse event detected! x=" .. x .. ", y=" .. y .. " buttons = " .. tostring(buttons.x) .. ", " .. tostring(buttons.y) .. ", " .. tostring(buttons.z))
+    end
 end
 
 return classA

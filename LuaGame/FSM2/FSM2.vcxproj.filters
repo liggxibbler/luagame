@@ -16,12 +16,15 @@
     <Filter Include="Source Files\Lua">
       <UniqueIdentifier>{7eb26743-9db8-4b3f-8e1a-bdaa89e11a6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Buckland">
+      <UniqueIdentifier>{0d6fb16c-1214-46df-aa75-68e8a030fdc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lua\brains">
+      <UniqueIdentifier>{a95bbb6a-a701-4a93-b88e-82216ae1b0df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="miner_states.lua">
-      <Filter>Source Files\Lua</Filter>
-    </None>
-    <None Include="test_component.lua">
       <Filter>Source Files\Lua</Filter>
     </None>
     <None Include="utility.lua">
@@ -30,23 +33,62 @@
     <None Include="main.lua">
       <Filter>Source Files\Lua</Filter>
     </None>
+    <None Include="class.lua">
+      <Filter>Source Files\Lua</Filter>
+    </None>
+    <None Include="scene.lua">
+      <Filter>Source Files\Lua</Filter>
+    </None>
+    <None Include="game_contorller.lua">
+      <Filter>Source Files\Lua</Filter>
+    </None>
+    <None Include="paddle_fsm.lua">
+      <Filter>Source Files\Lua\brains</Filter>
+    </None>
+    <None Include="brick_brain.lua">
+      <Filter>Source Files\Lua\brains</Filter>
+    </None>
+    <None Include="ball_brain.lua">
+      <Filter>Source Files\Lua\brains</Filter>
+    </None>
+    <None Include="game_brain.lua">
+      <Filter>Source Files\Lua\brains</Filter>
+    </None>
+    <None Include="test_component.lua">
+      <Filter>Source Files\Lua</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StateMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Miner.h">
+    <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BucklandEntity.h">
+      <Filter>Header Files\Buckland</Filter>
+    </ClInclude>
+    <ClInclude Include="BucklandMiner.h">
+      <Filter>Header Files\Buckland</Filter>
+    </ClInclude>
+    <ClInclude Include="BucklandStateMachine.h">
+      <Filter>Header Files\Buckland</Filter>
+    </ClInclude>
+    <ClInclude Include="BucklandUtility.h">
+      <Filter>Header Files\Buckland</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
