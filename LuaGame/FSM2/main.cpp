@@ -22,6 +22,8 @@ else\
 
 Game::InputManager* input_manager = nullptr;
 SDL_Window* gWindow = nullptr;
+SDL_Renderer* gRenderer = nullptr;
+SDL_Surface* gSurface = nullptr;
 
 bool HandleSdlEvents(Game::InputManager* input_manager)
 {
@@ -39,9 +41,9 @@ bool HandleSdlEvents(Game::InputManager* input_manager)
 
 void UpdateEntities(lua_State* L)
 {
-	auto update = luabridge::getGlobal(L, "update");
 	try
 	{
+		auto update = luabridge::getGlobal(L, "update");
 		update();
 	}
 	catch (luabridge::LuaException e)
@@ -67,6 +69,31 @@ void InitializeSDL()
 	// Half-assedly intialize SDL
 	SDL_Init(SDL_INIT_VIDEO);
 	gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	gSurface = SDL_GetWindowSurface(gWindow);
+	gRenderer = SDL_CreateRenderer(gWindow, -1, 0);	
+}
+
+void RenderThings()
+{
+	SDL_Rect rect;
+	
+	SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
+	SDL_RenderClear(gRenderer);
+	SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
+	
+	rect.x = input_manager->GetMouseX();
+	rect.y = input_manager->GetMouseY();
+	rect.w = 10;
+	rect.h = 10;
+	SDL_RenderFillRect(gRenderer, &rect);
+
+	rect.x = 320 - input_manager->GetMouseX();
+	rect.y = 240 - input_manager->GetMouseY();
+	rect.w = 10;
+	rect.h = 10;
+	SDL_RenderFillRect(gRenderer, &rect);
+	
+	SDL_RenderPresent(gRenderer);
 }
 
 int main(int argc, char** argv)
@@ -74,18 +101,21 @@ int main(int argc, char** argv)
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
+	// Run the main Lua script
+	LUA_CHECK(L, luaL_dofile, "main.lua");
+
 	InitializeInputManager(L);
 	
 	InitializeSDL();
-	
-	// Run the main Lua script
-	LUA_CHECK(L, luaL_dofile, "main.lua");
 	
 	bool quit = false;
 	while (!quit)
 	{
 		quit = HandleSdlEvents(input_manager);
 		UpdateEntities(L);
+		RenderThings();
+		SDL_Delay(15);
+		SDL_UpdateWindowSurface(gWindow);
 	}
 
 	return 0;
