@@ -20,6 +20,9 @@ else\
 	std::cout << "something" << std::endl;\
 
 
+Game::InputManager* input_manager = nullptr;
+SDL_Window* gWindow = nullptr;
+
 bool HandleSdlEvents(Game::InputManager* input_manager)
 {
 	static bool quit = false;
@@ -47,27 +50,37 @@ void UpdateEntities(lua_State* L)
 	}
 }
 
+void InitializeInputManager(lua_State* L)
+{
+	// Register InputManager class with Lua
+	Game::InputManager::RegisterWithLua(L);
+
+	// Construct InputManager "Singleton instance"
+	input_manager = new Game::InputManager();
+
+	// Pass pointer of InputManager "Singleton instance" to Lua
+	luabridge::setGlobal<Game::InputManager*>(L, input_manager, "Input");
+}
+
+void InitializeSDL()
+{
+	// Half-assedly intialize SDL
+	SDL_Init(SDL_INIT_VIDEO);
+	gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+}
+
 int main(int argc, char** argv)
 {
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	// Register InputManager class with Lua
-	Game::InputManager::RegisterWithLua(L);
+	InitializeInputManager(L);
 	
-	// Construct InputManager "Singleton instance"
-	auto input_manager = new Game::InputManager();	
-	
-	// Pass pointer of InputManager "Singleton instance" to Lua
-	luabridge::setGlobal<Game::InputManager*>(L, input_manager, "Input");
+	InitializeSDL();
 	
 	// Run the main Lua script
 	LUA_CHECK(L, luaL_dofile, "main.lua");
 	
-	// Half-assedly intialize SDL
-	SDL_Init(SDL_INIT_VIDEO);
-	auto gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-
 	bool quit = false;
 	while (!quit)
 	{
