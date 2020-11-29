@@ -1,34 +1,35 @@
 #pragma once
 
-#include <lua.hpp>
-#include <LuaBridge/LuaBridge.h>
-
 #include <string>
+#include <vector>
 
-namespace Buckland
+struct lua_State;
+
+namespace ECS
 {
+	class Component;
+
 	class Entity
 	{
+	public:
+		Entity();		
+		Entity(Entity& other);
 
-	private:
+		Entity(std::string name);
 
-		int m_id;
-		std::string m_name;
+		Component* AddComponent(std::string name);
+		Component* GetComponent(std::string name);
 
-		//used by the constructor to give each entity a unique ID
-		int NextValidID() { static int NextID = 0; return NextID++; }
+		std::string GetName();
+		void SetName(std::string name);
+
+		void Update();
 
 	public:
+		static void RegisterWithLua(lua_State* L);
 
-		Entity(std::string name = "NoName") :m_id(NextValidID()), m_name(name) {}
-
-		virtual ~Entity() {}
-
-		//all entities must implement an update function
-		virtual void Update() = 0;
-
-		//accessors
-		int         ID()const { return m_id; }
-		std::string Name()const { return m_name; }
+	private:
+		std::string m_name;
+		std::vector<Component*> m_components;
 	};
 }

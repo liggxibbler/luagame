@@ -96,6 +96,12 @@ void RenderThings()
 	SDL_RenderPresent(gRenderer);
 }
 
+void LoadScene(std::string scene)
+{
+	std::string path = scene + ".lua";
+	
+}
+
 int main(int argc, char** argv)
 {
 	lua_State* L = luaL_newstate();
@@ -106,6 +112,8 @@ int main(int argc, char** argv)
 
 	InitializeInputManager(L);
 	
+	LoadScene("scene");
+
 	InitializeSDL();
 	
 	bool quit = false;
