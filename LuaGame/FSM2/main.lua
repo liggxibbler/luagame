@@ -1,8 +1,20 @@
 utility = require('utility')
-classA = require("test_component")
+scene = require("scene")
 
-instance = classA:new()
+print ("inp = " .. tostring(Input))
+print ("ent = " .. tostring(EntMan.CreateEntity))
 
-function update()
-	instance:update()
+for entity, ent_data in pairs(scene) do	
+	ret = EntMan:CreateEntity(entity)
+	for component, comp_data in pairs(ent_data) do
+		print ("component " .. component)		
+		if component == "visual" then
+			visual = EntMan:CreateRenderComponent(comp_data.width, comp_data.height, comp_data.color[1], comp_data.color[2], comp_data.color[3])
+			ret:AddComponent(visual)
+		elseif component == "brain" then
+			lua = EntMan:CreateLuaComponent()
+			lua:SetLuaBrain(comp_data)
+			ret:AddComponent(lua)
+		end
+	end
 end

@@ -5,20 +5,19 @@
 #include <LuaBridge/LuaBridge.h>
 
 RenderComponent::RenderComponent() {}
-RenderComponent::RenderComponent(int w, int h) :
-	m_w(w), m_h(h)
+RenderComponent::RenderComponent(int w, int h, Uint8 r, Uint8 g, Uint8 b)
 {
 	m_rect.w = w;
 	m_rect.h = h;
+	m_color = SDL_Color{ r, g, b };
 }
 
 void RenderComponent::UpdateRect()
 {
-	int x = m_transform->GetX();
-	int y = m_transform->GetY();
+	auto pos = m_transform->GetPosition();
 	
-	m_rect.x = x - m_w / 2;
-	m_rect.y = y - m_h / 2;
+	m_rect.x = pos.x - m_rect.w / 2;
+	m_rect.y = pos.y - m_rect.h / 2;
 }
 
 SDL_Rect RenderComponent::GetRect()
@@ -28,4 +27,10 @@ SDL_Rect RenderComponent::GetRect()
 
 void RenderComponent::RegisterWithLua(lua_State* L)
 {
+	luabridge::getGlobalNamespace(L)
+		.beginNamespace("Game")
+			.deriveClass<RenderComponent, Component>("RenderComponent")
+				.addConstructor<void (*)(int, int, Uint8, Uint8, Uint8)>()
+			.endClass()
+		.endNamespace();
 }

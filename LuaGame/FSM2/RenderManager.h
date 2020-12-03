@@ -1,17 +1,30 @@
 #pragma once
 
-class RenderComponent;
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 240
 
 #include <vector>
+#include <SDL.h>
 
-class RenderManager
+#include "RenderComponent.h"
+
+namespace Game
 {
-public:
-	void Render();
+	class RenderManager
+	{
+	public:
+		void Initialize();
 
-	void AddRenderComponent(RenderComponent* render);
-	void RemoveRenderComponent(RenderComponent* render);
+		void Render();
 
-private:
-	std::vector<RenderComponent*> m_objects;
-};
+		void AddRenderComponent(RenderComponent* render);
+		void RemoveRenderComponent(RenderComponent* render);
+		void UpdateSurface();
+
+	private:
+		SDL_Window* m_sdlWindow = nullptr;
+		SDL_Renderer* m_sdlRenderer = nullptr;
+		SDL_Surface* m_sdlSurface = nullptr;
+		std::vector<RenderComponent*> m_objects;
+	};
+}

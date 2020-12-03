@@ -7,33 +7,40 @@ TransformComponent::TransformComponent()
 {
 }
 
-float TransformComponent::GetX()
+Vector2 TransformComponent::GetPosition()
 {
-	return m_x;
-}
-float TransformComponent::GetY()
-{
-	return m_y;
+	return m_pos;
 }
 
-void TransformComponent::SetX(float x)
+void TransformComponent::SetPosition(float x, float y)
 {
-	m_x = x;
+	m_pos.x = x;
+	m_pos.y = y;
 }
-void TransformComponent::SetY(float y)
-{
-	m_y = y;
-}
+
 
 void TransformComponent::RegisterWithLua(lua_State* L)
 {
 	luabridge::getGlobalNamespace(L)
 		.beginNamespace("Game")
 			.beginClass<TransformComponent>("Transform")
-				.addFunction("GetX", &TransformComponent::GetX)
-				.addFunction("GetY", &TransformComponent::GetY)
-				.addFunction("SetX", &TransformComponent::SetX)
-				.addFunction("SetY", &TransformComponent::SetY)
+				.addFunction("GetPosition", &TransformComponent::GetPosition)				
+				.addFunction("SetPosition", &TransformComponent::SetPosition)
+			.endClass()
+		.endNamespace();
+}
+
+// --------
+
+Vector2::Vector2() : x(0), y(0) {}
+Vector2::Vector2(float x_, float y_) : x(x_), y(y_) {}
+void Vector2::RegisterWithLua(lua_State* L)
+{
+	luabridge::getGlobalNamespace(L)
+		.beginNamespace("Game")
+			.beginClass<Vector2>("Vec2")
+				.addProperty("x", &Vector2::x)
+				.addProperty("y", &Vector2::y)
 			.endClass()
 		.endNamespace();
 }

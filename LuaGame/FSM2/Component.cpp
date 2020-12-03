@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "Entity.h"
 
+#include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
 
 namespace ECS
@@ -24,16 +25,6 @@ namespace ECS
 		return m_entity;
 	}
 	
-	void Component::SetLuaInstance(luabridge::LuaRef* instance)
-	{
-		m_luaInstance = instance;
-	}
-
-	luabridge::LuaRef* Component::GetLuaInstance()
-	{
-		return m_luaInstance;
-	}
-
 	void Component::RegisterWithLua(lua_State* L)
 	{
 		luabridge::getGlobalNamespace(L)

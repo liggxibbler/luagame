@@ -4,22 +4,20 @@
 #include <SDL.h>
 
 class TransformComponent;
-struct lua_State;
 
 class RenderComponent : public ECS::Component
 {
 public:
 	RenderComponent();
-	RenderComponent(int w, int h);
+	RenderComponent(int w, int h, Uint8 r, Uint8 g, Uint8 b);
 
 	void UpdateRect();
 
 	SDL_Rect GetRect();
 public:
 	static void RegisterWithLua(lua_State* L);
-private:
-	int m_w;
-	int m_h;
+private:	
 	TransformComponent* m_transform;
 	SDL_Rect m_rect;
+	SDL_Color m_color;
 };

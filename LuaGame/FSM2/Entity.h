@@ -3,12 +3,11 @@
 #include <string>
 #include <vector>
 
-struct lua_State;
+#include "Component.h"
+#include "TransformComponent.h"
 
 namespace ECS
 {
-	class Component;
-
 	class Entity
 	{
 	public:
@@ -17,11 +16,16 @@ namespace ECS
 
 		Entity(std::string name);
 
-		Component* AddComponent(std::string name);
+		void AddComponent(Component* c);
+
+		Component* AddComponentByName(std::string name);
 		Component* GetComponent(std::string name);
 
 		std::string GetName();
 		void SetName(std::string name);
+
+		Vector2 GetPosition();
+		void SetPosition(float x, float y);
 
 		void Update();
 
@@ -29,6 +33,7 @@ namespace ECS
 		static void RegisterWithLua(lua_State* L);
 
 	private:
+		TransformComponent* m_transform;
 		std::string m_name;
 		std::vector<Component*> m_components;
 	};

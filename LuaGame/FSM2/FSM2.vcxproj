@@ -157,14 +157,21 @@
     <None Include="game_contorller.lua" />
     <None Include="main.lua" />
     <None Include="miner_states.lua" />
-    <None Include="paddle_fsm.lua" />
+    <None Include="paddle.lua" />
     <None Include="scene.lua" />
     <None Include="test_component.lua" />
     <None Include="utility.lua" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LuaComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BucklandEntity.h" />
@@ -173,7 +180,12 @@
     <ClInclude Include="BucklandUtility.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LuaComponent.h" />
+    <ClInclude Include="RenderComponent.h" />
+    <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

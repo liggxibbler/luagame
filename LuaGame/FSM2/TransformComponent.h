@@ -2,22 +2,29 @@
 
 #include "Component.h"
 
-struct lua_State;
+class Vector2
+{
+public:
+	Vector2();
+	Vector2(float x, float y);
+	float x, y;
+
+public:
+	static void RegisterWithLua(lua_State* L);
+};
 
 class TransformComponent : public ECS::Component
 {
 public:
 	TransformComponent();
 
-	float GetX();
-	float GetY();
+	Vector2 GetPosition();
+	void SetPosition(float x, float y);
 
-	void SetX(float x);
-	void SetY(float y);
+private:
+	Vector2 m_pos;
+
 
 public:
 	static void RegisterWithLua(lua_State* L);
-private:
-	float m_x;
-	float m_y;
 };
