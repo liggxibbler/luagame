@@ -1,3 +1,10 @@
+function moveRight(e)
+	v = e:getPosition()
+	x = v:getX() + 1
+	v:setX(x)
+	e:setPosition(v)
+end
+
 ghost =
 {
 	Transform = 

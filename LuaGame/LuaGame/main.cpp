@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "Transform.h"
 
+#include "LuaEntityHandle.h"
+
 template <typename T>
 void AddComponent(Entity* e, luabridge::LuaRef& componentTable) {
 	e->AddComponent(std::type_index(typeid(T)), new T(componentTable));
@@ -54,12 +56,25 @@ int main()
 		std::cout << "pos key[" << i << "]=" << pos_keys[i] << std::endl;
 	}
 
-	std::cin.get();
+	
+	LuaEntityHandle::Register(L);
+	Vector3::Register(L);
 
+	auto moveRight = luabridge::getGlobal(L, "moveRight");
+	
 	auto e = LoadEntity(L, "ghost");
 	
 	auto p = e->get<Transform>()->GetPosition();
 	std::cout << "e.pos = (" << p.m_x << ", " << p.m_y << ", " << p.m_z << ")" << std::endl;
+
+	auto e_handle = LuaEntityHandle(e);
+
+	for (int i = 0; i < 10; ++i)
+	{
+		moveRight(e_handle);
+		auto p = e->get<Transform>()->GetPosition();
+		std::cout << "e.pos = (" << p.m_x << ", " << p.m_y << ", " << p.m_z << ")" << std::endl;
+	}
 
 	std::cin.get();
 

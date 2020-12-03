@@ -32,8 +32,6 @@ public:
 		return m_type;
 	}
 
-	void Update(Entity* e);
-
 private:
 	std::string m_type;
 	std::map<std::type_index, Component*> m_components;
