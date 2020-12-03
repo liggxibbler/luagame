@@ -17,9 +17,6 @@ if (func(L, arg) != 0)\
 	std::cout << "Lua error: " << lua_tostring(L, -1) << std::endl;\
 	return -1;\
 }\
-else\
-	std::cout << "something" << std::endl;\
-
 
 Game::InputManager gInputManager;
 Game::RenderManager gRenderManager;
