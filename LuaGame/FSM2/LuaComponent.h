@@ -2,22 +2,21 @@
 
 #include "Component.h"
 
-namespace luabridge
-{
-	class LuaRef;
-}
-struct lua_State;
+#include <lua.hpp>
+#include <LuaBridge/LuaBridge.h>
 
 class LuaComponent : public ECS::Component
 {
 public:
 	LuaComponent();
 
-	void SetLuaBrain(luabridge::LuaRef* instance);
-	luabridge::LuaRef* GetLuaBrain();
+	void SetLuaBrain(luabridge::LuaRef instance);
+	luabridge::LuaRef GetLuaBrain();
+
+	virtual void Update();
 
 private:
-	luabridge::LuaRef* m_luaBrain;
+	luabridge::LuaRef m_luaBrain;
 
 public:
 	static void RegisterWithLua(lua_State* L);

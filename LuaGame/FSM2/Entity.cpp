@@ -60,6 +60,8 @@ namespace ECS
 
 	void Entity::Update()
 	{
+		for (auto itercmp = m_components.begin(); itercmp != m_components.end(); ++itercmp)
+			(*itercmp)->Update();
 	}
 
 	void Entity::RegisterWithLua(lua_State* L)
@@ -70,6 +72,8 @@ namespace ECS
 					.addConstructor<void (*) (std::string)>()
 					.addFunction("GetName", &Entity::GetName)
 					.addFunction("SetName", &Entity::SetName)
+					.addFunction("GetPosition", &Entity::GetPosition)
+					.addFunction("SetPosition", &Entity::SetPosition)
 					.addFunction("AddComponent", &Entity::AddComponent)
 				.endClass()
 			.endNamespace();

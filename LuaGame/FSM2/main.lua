@@ -14,6 +14,7 @@ for entity, ent_data in pairs(scene) do
 		elseif component == "brain" then
 			lua = EntMan:CreateLuaComponent()
 			lua:SetLuaBrain(comp_data)
+			comp_data:SetEntity(ret)
 			ret:AddComponent(lua)
 		end
 	end

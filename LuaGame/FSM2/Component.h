@@ -17,6 +17,8 @@ namespace ECS
 
 		void SetEntity(Entity* entity);
 		Entity* GetEntity();
+
+		virtual void Update() {}
 	public:
 		static void RegisterWithLua(lua_State* L);
 	private:

@@ -3,16 +3,22 @@
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
 
-LuaComponent::LuaComponent() {}
+LuaComponent::LuaComponent() : m_luaBrain(nullptr) {}
 
-void LuaComponent::SetLuaBrain(luabridge::LuaRef* instance)
+void LuaComponent::SetLuaBrain(luabridge::LuaRef instance)
 {
 	m_luaBrain = instance;
 }
 
-luabridge::LuaRef* LuaComponent::GetLuaBrain()
+luabridge::LuaRef LuaComponent::GetLuaBrain()
 {
 	return m_luaBrain;
+}
+
+void LuaComponent::Update()
+{
+	if (!m_luaBrain.isNil())
+		m_luaBrain["update"](m_luaBrain);
 }
 
 void LuaComponent::RegisterWithLua(lua_State* L)
