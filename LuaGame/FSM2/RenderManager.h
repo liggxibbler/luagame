@@ -26,5 +26,8 @@ namespace Game
 		SDL_Renderer* m_sdlRenderer = nullptr;
 		SDL_Surface* m_sdlSurface = nullptr;
 		std::vector<RenderComponent*> m_objects;
+
+	public:
+		static void RegisterWithLua(lua_State* L);
 	};
 }

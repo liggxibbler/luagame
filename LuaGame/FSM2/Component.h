@@ -22,7 +22,7 @@ namespace ECS
 	public:
 		static void RegisterWithLua(lua_State* L);
 	private:
-		std::string m_typeName;
+		std::string m_typeName;	
 		Entity* m_entity;
 	};
 }

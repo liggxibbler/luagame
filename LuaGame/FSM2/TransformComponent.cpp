@@ -3,6 +3,8 @@
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
 
+#include <iostream>
+
 TransformComponent::TransformComponent()
 {
 }
@@ -17,7 +19,6 @@ void TransformComponent::SetPosition(float x, float y)
 	m_pos.x = x;
 	m_pos.y = y;
 }
-
 
 void TransformComponent::RegisterWithLua(lua_State* L)
 {

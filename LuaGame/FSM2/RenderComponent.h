@@ -14,6 +14,7 @@ public:
 	void UpdateRect();
 
 	SDL_Rect GetRect();
+	SDL_Color GetColor();
 public:
 	static void RegisterWithLua(lua_State* L);
 private:	

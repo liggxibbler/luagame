@@ -65,6 +65,13 @@ void InitializeEntityManager(lua_State* L)
 	luabridge::setGlobal<ECS::EntityManager*>(L, &gEntityManager, "EntMan");
 }
 
+void InitializeRenderManager(lua_State* L)
+{
+	gRenderManager.Initialize();
+	Game::RenderManager::RegisterWithLua(L);
+	luabridge::setGlobal<Game::RenderManager*>(L, &gRenderManager, "RenderMan");	
+}
+
 int main(int argc, char** argv)
 {
 	lua_State* L = luaL_newstate();
@@ -72,8 +79,7 @@ int main(int argc, char** argv)
 
 	InitializeInputManager(L);
 	InitializeEntityManager(L);
-	
-	gRenderManager.Initialize();
+	InitializeRenderManager(L);
 
 	// Run the main Lua script
 	LUA_CHECK(L, luaL_dofile, "main.lua");

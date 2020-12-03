@@ -1,5 +1,6 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
+#include "Entity.h"
 
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
@@ -14,7 +15,7 @@ RenderComponent::RenderComponent(int w, int h, Uint8 r, Uint8 g, Uint8 b)
 
 void RenderComponent::UpdateRect()
 {
-	auto pos = m_transform->GetPosition();
+	auto pos = GetEntity()->GetPosition();
 	
 	m_rect.x = pos.x - m_rect.w / 2;
 	m_rect.y = pos.y - m_rect.h / 2;
@@ -23,6 +24,11 @@ void RenderComponent::UpdateRect()
 SDL_Rect RenderComponent::GetRect()
 {
 	return m_rect;
+}
+
+SDL_Color RenderComponent::GetColor()
+{
+	return m_color;
 }
 
 void RenderComponent::RegisterWithLua(lua_State* L)

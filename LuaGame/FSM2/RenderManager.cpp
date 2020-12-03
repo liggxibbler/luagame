@@ -1,6 +1,9 @@
 #include "RenderManager.h"
 #include "RenderComponent.h"
 
+#include <lua.hpp>
+#include <LuaBridge/LuaBridge.h>
+
 namespace Game
 {
 	void RenderManager::Initialize()
@@ -16,10 +19,12 @@ namespace Game
 	{
 		SDL_SetRenderDrawColor(m_sdlRenderer, 0, 0, 0, 255);
 		SDL_RenderClear(m_sdlRenderer);
-		SDL_SetRenderDrawColor(m_sdlRenderer, 255, 0, 0, 255);
-
+		
 		for (auto iter = m_objects.begin(); iter != m_objects.end(); ++iter)
 		{
+			(*iter)->UpdateRect();			
+			auto color = (*iter)->GetColor();
+			SDL_SetRenderDrawColor(m_sdlRenderer, color.r, color.g, color.b, 255);
 			auto rect = (*iter)->GetRect();
 
 			SDL_RenderFillRect(m_sdlRenderer, &rect);
@@ -41,5 +46,14 @@ namespace Game
 	void RenderManager::UpdateSurface()
 	{
 		SDL_UpdateWindowSurface(m_sdlWindow);
+	}
+	void RenderManager::RegisterWithLua(lua_State* L)
+	{
+		luabridge::getGlobalNamespace(L)
+			.beginNamespace("Game")
+				.beginClass<RenderManager>("RenderManager")
+					.addFunction("Add", &RenderManager::AddRenderComponent)
+				.endClass()
+			.endNamespace();
 	}
 }
