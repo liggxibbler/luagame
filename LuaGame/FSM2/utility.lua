@@ -41,14 +41,14 @@ m.instantiate = function(scene)
 			elseif component == "brain" then
 				lua = EntMan:CreateLuaComponent()
 				
-				script = comp_data.script			
+				script_name = comp_data.script			
 				args = comp_data.args			
-				lua_module = require(script)
+				lua_module = require(script_name)
 				brain = lua_module:new(args)
 	
 				lua:SetLuaBrain(brain)
 				brain:SetEntity(ret)
-				ret:AddComponent(lua)
+				ret:AddComponentByName(lua, script_name)
 			end
 		end
 	end

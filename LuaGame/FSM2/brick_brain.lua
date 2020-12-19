@@ -1,22 +1,25 @@
-brick = {hp = 1}
+paddle = {}
 
-brick.new = function(self, obj)
+paddle.SetEntity = function(self, entity)
+	self.entity = entity;
+end
+
+paddle.new = function(self, obj)
 	obj = obj or {}
 	self.__index = self
 	setmetatable(obj, self)
 	return obj
 end
 
-brick.OnHit = function(self)
-	self.hp = self.hp - 1
-	if self.hp == 0 then
-		Game:OnEvent("brick_destroyed", self)
-		Destroy(self)
-	end
+paddle.update = function(self)	
+	--self.entity:SetPosition(self.x, self.y)
 end
 
-brick.OnCollision = function(self, other)
-	self:OnHit()
+paddle.OnCollision = function(self, point)
+	--print (point.x, point.y)
 end
 
-return brick
+paddle.OnStart = function(self)
+end
+
+return paddle

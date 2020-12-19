@@ -2,7 +2,6 @@
 
 #include "Entity.h"
 #include "TransformComponent.h"
-#include "LuaComponent.h"
 
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
@@ -32,12 +31,15 @@ namespace ECS
 		m_components.push_back(c);
 	}
 
-	Component* Entity::AddComponentByName(std::string name)
-	{		
+	void Entity::AddComponentByName(LuaComponent* c, std::string name)
+	{
+		AddComponent(c);
+		m_luaComponentMap[name] = c;
 	}
 
-	Component* Entity::GetComponent(std::string name)
+	LuaComponent* Entity::GetComponent(std::string name)
 	{
+		return m_luaComponentMap[name];
 	}
 
 	std::string Entity::GetName()
@@ -95,6 +97,8 @@ namespace ECS
 					.addFunction("GetPosition", &Entity::GetPosition)
 					.addFunction("SetPosition", &Entity::SetPosition)
 					.addFunction("AddComponent", &Entity::AddComponent)
+					.addFunction("AddComponentByName", &Entity::AddComponentByName)
+					.addFunction("GetComponent", &Entity::GetComponent)
 					.addFunction("OnStart", &Entity::OnStart)
 				.endClass()
 			.endNamespace();

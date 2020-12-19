@@ -2,8 +2,10 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "Component.h"
+#include "LuaComponent.h"
 #include "TransformComponent.h"
 
 namespace ECS
@@ -18,8 +20,8 @@ namespace ECS
 
 		void AddComponent(Component* c);
 
-		Component* AddComponentByName(std::string name);
-		Component* GetComponent(std::string name);
+		void AddComponentByName(LuaComponent* c, std::string name);
+		LuaComponent* GetComponent(std::string name);
 
 		std::string GetName();
 		void SetName(std::string name);
@@ -38,5 +40,6 @@ namespace ECS
 		TransformComponent* m_transform;
 		std::string m_name;
 		std::vector<Component*> m_components;
+		std::unordered_map<std::string, LuaComponent*> m_luaComponentMap;
 	};
 }

@@ -1,17 +1,5 @@
 scene =
 {
-	paddle =
-	{
-		visual =
-		{
-			width = 50,
-			height = 10,
-			color = {0, 255, 128},
-			hasCollider = true,
-			isDynamic = true
-		},		
-		brain = {script="paddle"}--Paddle:new()
-	},	
 	game =
 	{
 		brain = {script="game_controller"}

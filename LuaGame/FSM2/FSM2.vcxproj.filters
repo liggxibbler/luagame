@@ -45,18 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="brick_brain.lua">
-      <Filter>Lua Scripts\brains</Filter>
-    </None>
-    <None Include="ball_brain.lua">
-      <Filter>Lua Scripts\brains</Filter>
-    </None>
-    <None Include="game_brain.lua">
-      <Filter>Lua Scripts\brains</Filter>
-    </None>
-    <None Include="paddle.lua">
-      <Filter>Lua Scripts\brains</Filter>
-    </None>
     <None Include="class.lua">
       <Filter>Lua Scripts</Filter>
     </None>
@@ -75,13 +63,25 @@
     <None Include="utility.lua">
       <Filter>Lua Scripts\Game</Filter>
     </None>
-    <None Include="plainbox.lua">
-      <Filter>Lua Scripts\brains</Filter>
-    </None>
     <None Include="brick.lua">
       <Filter>Lua Scripts\Game</Filter>
     </None>
     <None Include="game_controller.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
+    <None Include="ball_brain.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
+    <None Include="ball.lua">
+      <Filter>Lua Scripts\Game</Filter>
+    </None>
+    <None Include="paddle_brain.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
+    <None Include="paddle.lua">
+      <Filter>Lua Scripts\Game</Filter>
+    </None>
+    <None Include="brick_brain.lua">
       <Filter>Lua Scripts\brains</Filter>
     </None>
   </ItemGroup>

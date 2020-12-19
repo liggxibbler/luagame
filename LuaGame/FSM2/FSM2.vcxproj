@@ -150,16 +150,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ball.lua" />
     <None Include="ball_brain.lua" />
     <None Include="brick.lua" />
-    <None Include="brick_brain.lua" />
     <None Include="class.lua" />
-    <None Include="game_brain.lua" />
     <None Include="game_controller.lua" />
     <None Include="main.lua" />
     <None Include="miner_states.lua" />
     <None Include="paddle.lua" />
-    <None Include="plainbox.lua" />
+    <None Include="paddle_brain.lua" />
+    <None Include="brick_brain.lua" />
     <None Include="scene.lua" />
     <None Include="test_component.lua" />
     <None Include="utility.lua" />

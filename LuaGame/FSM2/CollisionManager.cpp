@@ -15,12 +15,12 @@ namespace Game
 		if (is_dynamic)
 		{
 			m_dynamicObjects.push_back(collider);
-			std::cout << "Added dynamic collider. count is now " << m_dynamicObjects.size();
+			std::cout << "Added dynamic collider. count is now " << m_dynamicObjects.size() << std::endl;
 		}
 		else
 		{
 			m_staticObjects.push_back(collider);
-			std::cout << "Added static collider. count is now " << m_staticObjects.size();
+			std::cout << "Added static collider. count is now " << m_staticObjects.size() << std::endl;
 		}
 	}
 	
