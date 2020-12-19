@@ -1,8 +1,6 @@
 #include "Utility.h"
-#include "InputManager.h"
-#include "RenderManager.h"
 #include "EntityManager.h"
-#include "LuaComponent.h"
+#include "InputManager.h"
 #include "Entity.h"
 #include <iostream>
 #include <SDL.h>
@@ -21,6 +19,7 @@ if (func(L, arg) != 0)\
 Game::InputManager gInputManager;
 Game::RenderManager gRenderManager;
 ECS::EntityManager gEntityManager;
+Game::CollisionManager gCollisionManager;
 
 std::vector<ECS::Entity*> gEntites;
 
@@ -69,6 +68,13 @@ void InitializeRenderManager(lua_State* L)
 	luabridge::setGlobal<Game::RenderManager*>(L, &gRenderManager, "RenderMan");	
 }
 
+void InitializeCollisionManager(lua_State* L)
+{
+	gCollisionManager.Initialize();
+	Game::CollisionManager::RegisterWithLua(L);
+	luabridge::setGlobal<Game::CollisionManager*>(L, &gCollisionManager, "CollisionMan");
+}
+
 int main(int argc, char** argv)
 {
 	lua_State* L = luaL_newstate();
@@ -77,6 +83,7 @@ int main(int argc, char** argv)
 	InitializeInputManager(L);
 	InitializeEntityManager(L);
 	InitializeRenderManager(L);
+	InitializeCollisionManager(L);
 
 	// Run the main Lua script
 	LUA_CHECK(L, luaL_dofile, "main.lua");

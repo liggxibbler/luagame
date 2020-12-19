@@ -30,6 +30,11 @@ namespace ECS
 		return new LuaComponent();
 	}
 
+	ColliderComponent* EntityManager::CreateColliderComponent(int w, int h, bool isDynamic)
+	{
+		return new ColliderComponent(w, h, isDynamic);
+	}
+
 	void EntityManager::Update()
 	{
 		for (auto iterent = m_entities.begin(); iterent != m_entities.end(); ++iterent)
@@ -52,6 +57,7 @@ namespace ECS
 					.addFunction("CreateEntity", &EntityManager::CreateEntity)
 					.addFunction("CreateLuaComponent", &EntityManager::CreateLuaComponent)
 					.addFunction("CreateRenderComponent", &EntityManager::CreateRenderComponent)
+					.addFunction("CreateColliderComponent", &EntityManager::CreateColliderComponent)
 				.endClass()
 			.endNamespace();
 	}

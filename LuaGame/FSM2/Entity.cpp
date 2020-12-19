@@ -28,6 +28,7 @@ namespace ECS
 
 	void Entity::AddComponent(Component* c)
 	{
+		c->SetEntity(this);
 		m_components.push_back(c);
 	}
 

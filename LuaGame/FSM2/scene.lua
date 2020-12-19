@@ -8,8 +8,10 @@ scene =
 		{
 			width = 20,
 			height = 20,
-			color = {0, 255, 128}
-		},
+			color = {0, 255, 128},
+			hasCollider = true,
+			isDynamic = true
+		},		
 		brain = Paddle:new()
 	}
 }

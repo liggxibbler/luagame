@@ -78,6 +78,13 @@ namespace Game
 
 	void CollisionManager::RegisterWithLua(lua_State* L)
 	{
+		ColliderComponent::RegisterWithLua(L);
 
+		luabridge::getGlobalNamespace(L)
+			.beginNamespace("Game")
+				.beginClass<CollisionManager>("CollisionManager")
+					.addFunction("Add", &CollisionManager::AddColliderComponent)
+				.endClass()
+			.endNamespace();
 	}
 }
