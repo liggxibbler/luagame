@@ -78,6 +78,9 @@
     <None Include="game_contorller.lua">
       <Filter>Lua Scripts\Game</Filter>
     </None>
+    <None Include="plainbox.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

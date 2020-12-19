@@ -158,6 +158,7 @@
     <None Include="main.lua" />
     <None Include="miner_states.lua" />
     <None Include="paddle.lua" />
+    <None Include="plainbox.lua" />
     <None Include="scene.lua" />
     <None Include="test_component.lua" />
     <None Include="utility.lua" />

@@ -17,7 +17,7 @@ ECS::ComponentType ColliderComponent::GetType()
 Rect ColliderComponent::GetRect()
 {
 	auto pos = GetEntity()->GetPosition();
-	return Rect{ pos.x - m_w / 2, pos.y - m_h / 2, pos.x + m_w / 2, pos.y + m_h / 2 };
+	return Rect{ pos.x - m_w / 2, pos.y - m_h / 2, m_w, m_h };
 }
 
 void ColliderComponent::RegisterWithLua(lua_State* L)

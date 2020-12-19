@@ -91,6 +91,7 @@ int main(int argc, char** argv)
 	bool quit = false;
 	while (!quit)
 	{
+		gCollisionManager.Update();
 		quit = HandleSdlEvents(gInputManager);
 		UpdateEntities(L);
 		gRenderManager.Render();

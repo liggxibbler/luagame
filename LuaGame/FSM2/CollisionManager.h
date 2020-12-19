@@ -16,6 +16,7 @@ namespace Game
 		void RemoveColliderComponent(ColliderComponent* collider);
 		
 		bool CheckCollision(ColliderComponent* first, ColliderComponent* second);
+		void HandlePossibleCollision(ColliderComponent* first, ColliderComponent* second);
 		void Update();
 
 	private:		
