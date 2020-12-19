@@ -77,6 +77,13 @@ namespace ECS
 		}
 	}
 
+	void Entity::OnStart()
+	{
+		for (auto iter = m_components.begin(); iter != m_components.end(); ++iter)
+			if ((*iter)->GetType() == ComponentType_Lua)
+				((LuaComponent*)(*iter))->OnStart();
+	}
+
 	void Entity::RegisterWithLua(lua_State* L)
 	{
 		luabridge::getGlobalNamespace(L)
@@ -88,6 +95,7 @@ namespace ECS
 					.addFunction("GetPosition", &Entity::GetPosition)
 					.addFunction("SetPosition", &Entity::SetPosition)
 					.addFunction("AddComponent", &Entity::AddComponent)
+					.addFunction("OnStart", &Entity::OnStart)
 				.endClass()
 			.endNamespace();
 	}

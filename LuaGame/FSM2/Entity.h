@@ -29,6 +29,7 @@ namespace ECS
 
 		void Update();
 		void OnCollision(Vector2 point);
+		void OnStart();
 
 	public:
 		static void RegisterWithLua(lua_State* L);

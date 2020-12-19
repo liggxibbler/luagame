@@ -32,6 +32,12 @@ void LuaComponent::OnCollision(Vector2 point)
 		m_luaBrain["OnCollision"](m_luaBrain, point);
 }
 
+void LuaComponent::OnStart()
+{
+	if (!m_luaBrain.isNil())
+		m_luaBrain["OnStart"](m_luaBrain);
+}
+
 void LuaComponent::RegisterWithLua(lua_State* L)
 {
 	luabridge::getGlobalNamespace(L)

@@ -151,10 +151,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ball_brain.lua" />
+    <None Include="brick.lua" />
     <None Include="brick_brain.lua" />
     <None Include="class.lua" />
     <None Include="game_brain.lua" />
-    <None Include="game_contorller.lua" />
+    <None Include="game_controller.lua" />
     <None Include="main.lua" />
     <None Include="miner_states.lua" />
     <None Include="paddle.lua" />

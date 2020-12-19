@@ -1,43 +1,20 @@
-Paddle = require("paddle")
-PlainBox = require("plainbox")
-
 scene =
 {
 	paddle =
 	{
 		visual =
 		{
-			width = 20,
-			height = 80,
+			width = 50,
+			height = 10,
 			color = {0, 255, 128},
 			hasCollider = true,
 			isDynamic = true
 		},		
 		brain = {script="paddle"}--Paddle:new()
-	},
-	plain =
+	},	
+	game =
 	{
-		visual =
-		{
-			width = 40,
-			height = 10,
-			color = {255, 0, 255},
-			hasCollider = true,
-			isDynamic = false
-		},		
-		brain = {script="plainbox", args={x=20, y=30}}--PlainBox:new({x=20, y=30})
-	},
-	plain2 =
-	{
-		visual =
-		{
-			width = 40,
-			height = 10,
-			color = {255, 0, 255},
-			hasCollider = true,
-			isDynamic = false
-		},		
-		brain = {script="plainbox", args={x=100, y=200}}--PlainBox:new({x=100, y=200})
+		brain = {script="game_controller"}
 	}
 }
 

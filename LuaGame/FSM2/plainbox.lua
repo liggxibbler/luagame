@@ -12,11 +12,14 @@ paddle.new = function(self, obj)
 end
 
 paddle.update = function(self)	
-	self.entity:SetPosition(self.x, self.y)
+	--self.entity:SetPosition(self.x, self.y)
 end
 
 paddle.OnCollision = function(self, point)
 	--print (point.x, point.y)
+end
+
+paddle.OnStart = function(self)
 end
 
 return paddle

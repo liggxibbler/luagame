@@ -19,8 +19,11 @@ function m.getKeys(t)
 end
 
 m.instantiate = function(scene)
+	scene_instance = {}
+	
 	for entity, ent_data in pairs(scene) do
 		ret = EntMan:CreateEntity(entity)
+		table.insert(scene_instance, ret)
 		for component, comp_data in pairs(ent_data) do
 			print ("component " .. component)		
 			if component == "visual" then
@@ -49,6 +52,20 @@ m.instantiate = function(scene)
 			end
 		end
 	end
+
+	for _, v in ipairs(scene_instance) do
+		v:OnStart()
+	end		
+
+	return scene_instance	
+end
+
+m.copyTable = function(source)
+	ret = {}	
+	for i, v in pairs(source) do
+		ret[i] = v
+	end
+	return ret
 end
 
 return m

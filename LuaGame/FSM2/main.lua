@@ -5,4 +5,4 @@ print ("inp = " .. tostring(Input))
 print ("ent = " .. tostring(EntMan))
 print ("col = " .. tostring(CollisionMan))
 
-utility.instantiate(scene)
+scene_instance = utility.instantiate(scene)

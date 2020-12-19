@@ -18,6 +18,7 @@ public:
 
 	virtual void Update();
 	virtual void OnCollision(Vector2 point);
+	virtual void OnStart();
 
 private:
 	luabridge::LuaRef m_luaBrain;
