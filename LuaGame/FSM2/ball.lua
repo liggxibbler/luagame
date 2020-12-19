@@ -4,8 +4,8 @@ prefab =
 	{
 		visual =
 		{
-			width = 5,
-			height = 5,
+			width = 10,
+			height = 10,
 			color = {255, 255, 255},
 			hasCollider = true,
 			isDynamic = true

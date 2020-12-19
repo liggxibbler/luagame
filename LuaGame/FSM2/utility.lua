@@ -30,6 +30,9 @@ m.instantiate = function(scene)
 				visual = EntMan:CreateRenderComponent(comp_data.width, comp_data.height, comp_data.color[1], comp_data.color[2], comp_data.color[3])			
 				RenderMan:Add(visual)
 				ret:AddComponent(visual)
+				if comp_data.position ~= nil then
+					ret:SetPosition(comp_data.position.x, comp_data.position.y)
+				end
 	
 				if comp_data.hasCollider == true then
 					print ("has collider")

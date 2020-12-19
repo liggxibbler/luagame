@@ -1,6 +1,6 @@
 require ("math")
 
-ball = {vx_default = 10, vy_default = -10, vx = 0, vy = 0}
+ball = {vx_default = 15, vy_default = -15, vx = 0, vy = 0}
 
 ball.SetEntity = function(self, entity)
 	self.entity = entity;
@@ -35,8 +35,7 @@ ball.OnCollision = function(self, point)
 		end	
 end
 
-ball.SetPaddle = function(self, paddle)
-	print ("SETTING PADDLE")
+ball.SetPaddle = function(self, paddle)	
 	self.paddle = paddle
 end
 
