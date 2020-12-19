@@ -15,10 +15,21 @@ luabridge::LuaRef LuaComponent::GetLuaBrain()
 	return m_luaBrain;
 }
 
+ECS::ComponentType LuaComponent::GetType()
+{
+	return ECS::ComponentType_Lua;
+}
+
 void LuaComponent::Update()
 {
 	if (!m_luaBrain.isNil())
 		m_luaBrain["update"](m_luaBrain);
+}
+
+void LuaComponent::OnCollision(Vector2 point)
+{
+	if (!m_luaBrain.isNil())
+		m_luaBrain["OnCollision"](m_luaBrain, point);
 }
 
 void LuaComponent::RegisterWithLua(lua_State* L)

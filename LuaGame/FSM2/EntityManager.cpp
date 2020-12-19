@@ -40,6 +40,7 @@ namespace ECS
 
 	void EntityManager::RegisterWithLua(lua_State* L)
 	{
+		Vector2::RegisterWithLua(L);
 		ECS::Component::RegisterWithLua(L);
 		RenderComponent::RegisterWithLua(L);
 		LuaComponent::RegisterWithLua(L);

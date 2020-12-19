@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Component.h"
+#include "TransformComponent.h"
 
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
@@ -13,7 +14,10 @@ public:
 	void SetLuaBrain(luabridge::LuaRef instance);
 	luabridge::LuaRef GetLuaBrain();
 
+	ECS::ComponentType GetType() override;
+
 	virtual void Update();
+	virtual void OnCollision(Vector2 point);
 
 private:
 	luabridge::LuaRef m_luaBrain;

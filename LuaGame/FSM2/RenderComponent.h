@@ -11,6 +11,8 @@ public:
 	RenderComponent();
 	RenderComponent(int w, int h, Uint8 r, Uint8 g, Uint8 b);
 
+	ECS::ComponentType GetType() override;
+
 	void UpdateRect();
 
 	SDL_Rect GetRect();

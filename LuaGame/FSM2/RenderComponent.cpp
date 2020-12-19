@@ -13,6 +13,11 @@ RenderComponent::RenderComponent(int w, int h, Uint8 r, Uint8 g, Uint8 b)
 	m_color = SDL_Color{ r, g, b };
 }
 
+ECS::ComponentType RenderComponent::GetType()
+{
+	return ECS::ComponentType_Render;
+}
+
 void RenderComponent::UpdateRect()
 {
 	auto pos = GetEntity()->GetPosition();

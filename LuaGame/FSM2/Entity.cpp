@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "TransformComponent.h"
+#include "LuaComponent.h"
 
 #include <lua.hpp>
 #include <LuaBridge/LuaBridge.h>
@@ -62,6 +63,17 @@ namespace ECS
 	{
 		for (auto itercmp = m_components.begin(); itercmp != m_components.end(); ++itercmp)
 			(*itercmp)->Update();
+	}
+
+	void Entity::OnCollision(Vector2 point)
+	{
+		for (auto luaiter = m_components.begin(); luaiter != m_components.end(); ++luaiter)
+		{
+			if ((*luaiter)->GetType() == ComponentType_Lua)
+			{
+				((LuaComponent*)(*luaiter))->OnCollision(point);
+			}
+		}
 	}
 
 	void Entity::RegisterWithLua(lua_State* L)
