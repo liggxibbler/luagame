@@ -1,6 +1,6 @@
 require ("math")
 
-ball = {vx_default = 2, vy_default = 2, vx = 0, vy = 0}
+ball = {vx_default = 10, vy_default = -10, vx = 0, vy = 0}
 
 ball.SetEntity = function(self, entity)
 	self.entity = entity;
@@ -44,14 +44,15 @@ ball.update = function(self)
 	if self.state == self.states.init then		
 		pos = self.paddle.entity:GetPosition()
 		self.entity:SetPosition(pos.x, pos.y - 10)
-		--if Input:GetMouseClick(0) then
-		--	self.state = self.states.play
-		--	self.vx = vx_default
-		--	self.vy = vy_default
-		--end
+		if Input:GetMouseButton(0) then
+			self.state = self.states.play
+			self.vx = self.vx_default
+			self.vy = self.vy_default
+		end
 	elseif self.state == self.states.play then
 		pos = self.entity:GetPosition()
-		dx, dy = self.vx * .16, self.vy * .16,
+		dx, dy = self.vx * .16, self.vy * .16
+		print (tostring(dx) .. ", " .. tostring(dy))
 		self.entity:SetPosition(pos.x + dx, pos.y + dy)
 	end
 end

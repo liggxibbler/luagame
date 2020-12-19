@@ -18,7 +18,7 @@ end
 
 gc.OnStart = function(self)	
 	self:MakePaddle()
-	self:LayBrick(5, 5)
+	self:LayBrick(5, 13)
 	self:MakeBall()
 end
 
