@@ -25,7 +25,7 @@ paddle.update = function(self)
 end
 
 paddle.OnCollision = function(self, point)
-	print (point.x, point.y)
+	--print (point.x, point.y)
 end
 
 paddle.OnStart = function(self)

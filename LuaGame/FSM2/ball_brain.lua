@@ -51,7 +51,7 @@ ball.update = function(self)
 	elseif self.state == self.states.play then
 		pos = self.entity:GetPosition()
 		dx, dy = self.vx * .16, self.vy * .16
-		print (tostring(dx) .. ", " .. tostring(dy))
+		--print (tostring(dx) .. ", " .. tostring(dy))
 		self.entity:SetPosition(pos.x + dx, pos.y + dy)
 	end
 end

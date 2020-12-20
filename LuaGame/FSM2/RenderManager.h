@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_WIDTH 320 * 2
-#define SCREEN_HEIGHT 240 * 2
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 240
 
 #include <vector>
 #include <SDL.h>

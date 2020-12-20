@@ -5,6 +5,8 @@
 
 #include "ColliderComponent.h"
 
+#define SKIN_DEPTH 3.0f
+
 namespace Game
 {
 	class CollisionManager
@@ -17,6 +19,7 @@ namespace Game
 		
 		bool CheckCollision(ColliderComponent* first, ColliderComponent* second);
 		void HandlePossibleCollision(ColliderComponent* first, ColliderComponent* second);
+		Vector2 GetCollisionPoint(Rect r1, Rect r2);
 		void Update();
 
 	private:		

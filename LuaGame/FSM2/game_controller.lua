@@ -28,11 +28,13 @@ end
 
 gc.LayBrick = function(self, rows, cols)
 	self.bricks = {}
+	x0 = 0--160
+	y0 = 0--50
 	for j = 1, rows do
 		for i = 1, cols do
 			ent = EntMan:CreateEntity("brick"..tostring(i).."x"..tostring(j))
 			brick = utility.instantiate(brick_prefab)
-			brick[1]:SetPosition(i * 22, j * 12);
+			brick[1]:SetPosition(x0 + i * 21, y0 + j * 11);
 			table.insert(self.bricks, brick)
 		end
 	end

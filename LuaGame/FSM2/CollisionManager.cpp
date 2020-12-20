@@ -56,11 +56,42 @@ namespace Game
 			auto pos1 = first->GetEntity()->GetPosition();
 			auto pos2 = second->GetEntity()->GetPosition();
 
-			Vector2 one2two = pos1 - pos2;
-			Vector2 two2one = pos2 - pos1;
-
+			//std::cout << "from " << first->GetEntity()->GetName() << ": ";
+			Vector2 one2two = GetCollisionPoint(first->GetRect(), second->GetRect());
 			first->GetEntity()->OnCollision(one2two);
+			//std::cout << ", from " << second->GetEntity()->GetName() << ": ";
+			Vector2 two2one = GetCollisionPoint(second->GetRect(), first->GetRect());
+			//std::cout << std::endl;
 			second->GetEntity()->OnCollision(two2one);
+		}
+	}
+
+	Vector2 CollisionManager::GetCollisionPoint(Rect r1, Rect r2)
+	{
+		auto right = r1.m_x + r1.m_w - r2.m_x;
+		auto top = r2.m_y + r2.m_h - r1.m_y;
+		auto left = r2.m_x + r2.m_w - r1.m_x;
+		auto bottom = r1.m_y + r1.m_h - r2.m_y;
+
+		if (right <= SKIN_DEPTH)
+		{
+			//std::cout << "RIGHT";
+			return Vector2(r1.m_w / 2, 0);
+		}
+		else if (left <= SKIN_DEPTH)
+		{
+			//std::cout << "LEFT";
+			return Vector2(-r1.m_w / 2, 0);
+		}
+		else if (top <= SKIN_DEPTH)
+		{
+			//std::cout << "TOP";
+			return Vector2(0, -r1.m_h / 2);
+		}
+		else if (bottom <= SKIN_DEPTH)
+		{
+			//std::cout << "BOTTOM";
+			return Vector2(0, r1.m_h / 2);
 		}
 	}
 
