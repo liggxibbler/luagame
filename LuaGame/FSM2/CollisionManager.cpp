@@ -98,18 +98,25 @@ namespace Game
 	void CollisionManager::Update()
 	{
 		for (auto dyniter1 = m_dynamicObjects.begin(); dyniter1 != m_dynamicObjects.end(); ++dyniter1)
+		{
+			if (!(*dyniter1)->GetEntity()->IsActive())
+				continue;
 			for (auto dyniter2 = std::next(dyniter1); dyniter2 != m_dynamicObjects.end(); ++dyniter2)
 			{
+				if (!(*dyniter2)->GetEntity()->IsActive())
+					continue;
 				if (dyniter1 != dyniter2)
 					HandlePossibleCollision(*dyniter1, *dyniter2);
 			}
 
-		for (auto dyniter = m_dynamicObjects.begin(); dyniter != m_dynamicObjects.end(); ++dyniter)		
 			for (auto statiter = m_staticObjects.begin(); statiter != m_staticObjects.end(); ++statiter)
 			{
-				if (dyniter != statiter)
-					HandlePossibleCollision(*dyniter, *statiter);
-			}		
+				if (!(*statiter)->GetEntity()->IsActive())
+					continue;
+				if (dyniter1 != statiter)
+					HandlePossibleCollision(*dyniter1, *statiter);
+			}
+		}
 	}
 
 	void CollisionManager::RegisterWithLua(lua_State* L)

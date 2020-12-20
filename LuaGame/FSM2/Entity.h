@@ -33,10 +33,14 @@ namespace ECS
 		void OnCollision(Vector2 point);
 		void OnStart();
 
+		void SetActive(bool state);
+		bool IsActive();
+
 	public:
 		static void RegisterWithLua(lua_State* L);
 
 	private:
+		bool m_isActive = true;
 		TransformComponent* m_transform;
 		std::string m_name;
 		std::vector<Component*> m_components;

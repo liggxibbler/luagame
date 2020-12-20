@@ -84,6 +84,9 @@
     <None Include="brick_brain.lua">
       <Filter>Lua Scripts\brains</Filter>
     </None>
+    <None Include="bottom_wall_brain.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

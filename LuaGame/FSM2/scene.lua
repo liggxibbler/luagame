@@ -50,7 +50,8 @@ scene =
 			color = {0, 0, 255},
 			hasCollider = true,
 			isDynamic = false
-		}
+		},
+		brain={script="bottom_wall_brain"}
 	}
 }
 

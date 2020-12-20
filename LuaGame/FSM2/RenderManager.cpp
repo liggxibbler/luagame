@@ -1,3 +1,4 @@
+#include "Entity.h"
 #include "RenderManager.h"
 #include "RenderComponent.h"
 
@@ -22,6 +23,8 @@ namespace Game
 		
 		for (auto iter = m_objects.begin(); iter != m_objects.end(); ++iter)
 		{
+			if (!(*iter)->GetEntity()->IsActive())
+				continue;
 			(*iter)->UpdateRect();			
 			auto color = (*iter)->GetColor();
 			SDL_SetRenderDrawColor(m_sdlRenderer, color.r, color.g, color.b, 255);

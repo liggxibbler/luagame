@@ -86,6 +86,16 @@ namespace ECS
 				((LuaComponent*)(*iter))->OnStart();
 	}
 
+	void Entity::SetActive(bool state)
+	{
+		m_isActive = state;
+	}
+
+	bool Entity::IsActive()
+	{
+		return m_isActive;
+	}
+
 	void Entity::RegisterWithLua(lua_State* L)
 	{
 		luabridge::getGlobalNamespace(L)
@@ -100,6 +110,8 @@ namespace ECS
 					.addFunction("AddComponentByName", &Entity::AddComponentByName)
 					.addFunction("GetComponent", &Entity::GetComponent)
 					.addFunction("OnStart", &Entity::OnStart)
+					.addFunction("IsActive", &Entity::IsActive)
+					.addFunction("SetActive", &Entity::SetActive)
 				.endClass()
 			.endNamespace();
 	}

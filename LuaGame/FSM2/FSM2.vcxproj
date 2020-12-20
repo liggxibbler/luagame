@@ -152,6 +152,7 @@
   <ItemGroup>
     <None Include="ball.lua" />
     <None Include="ball_brain.lua" />
+    <None Include="bottom_wall_brain.lua" />
     <None Include="brick.lua" />
     <None Include="class.lua" />
     <None Include="game_controller.lua" />

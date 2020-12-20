@@ -17,9 +17,10 @@ gc.new = function(self, obj)
 end
 
 gc.OnStart = function(self)	
+	_G.GameController = self	
 	self:MakePaddle()
 	self:LayBrick(5, 13)
-	self:MakeBall()
+	self:MakeBall()	
 end
 
 gc.MakePaddle = function(self)
@@ -44,6 +45,10 @@ gc.MakeBall = function(self)
 	self.ball = utility.instantiate(ball_prefab)[1]:GetComponent("ball_brain"):GetLuaBrain()	
 	self.ball:SetPaddle(self.paddle)
 	print ("PADDLE'S ENTITY IS " .. tostring(self.ball.paddle.entity))
+end
+
+gc.LostBall = function(self)
+	self.ball:OnLost()
 end
 
 gc.update = function(self)

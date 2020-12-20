@@ -56,6 +56,10 @@ ball.update = function(self)
 	end
 end
 
+ball.OnLost = function(self)
+	self.state = self.states.init
+end
+
 ball.OnStart = function(self)
 end
 

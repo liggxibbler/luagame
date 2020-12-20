@@ -16,7 +16,7 @@ paddle.update = function(self)
 end
 
 paddle.OnCollision = function(self, point)
-	--print (point.x, point.y)
+	self.entity:SetActive(false)
 end
 
 paddle.OnStart = function(self)
