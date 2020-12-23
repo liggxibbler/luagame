@@ -99,5 +99,7 @@ int main(int argc, char** argv)
 		gRenderManager.UpdateSurface();
 	}
 
+	lua_close(L);
+
 	return 0;
 }
