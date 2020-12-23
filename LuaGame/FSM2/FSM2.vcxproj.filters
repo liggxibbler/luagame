@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Buckland">
-      <UniqueIdentifier>{0d6fb16c-1214-46df-aa75-68e8a030fdc5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{585f68f0-e572-4d42-8470-7d57d2586ce2}</UniqueIdentifier>
     </Filter>
@@ -87,6 +84,9 @@
     <None Include="bottom_wall_brain.lua">
       <Filter>Lua Scripts\brains</Filter>
     </None>
+    <None Include="class_base.lua">
+      <Filter>Lua Scripts\brains</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,25 +126,10 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Systems</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BucklandEntity.h">
-      <Filter>Header Files\Buckland</Filter>
-    </ClInclude>
-    <ClInclude Include="BucklandMiner.h">
-      <Filter>Header Files\Buckland</Filter>
-    </ClInclude>
-    <ClInclude Include="BucklandStateMachine.h">
-      <Filter>Header Files\Buckland</Filter>
-    </ClInclude>
-    <ClInclude Include="BucklandUtility.h">
-      <Filter>Header Files\Buckland</Filter>
-    </ClInclude>
     <ClInclude Include="RenderComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -177,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="Rector.h">
       <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

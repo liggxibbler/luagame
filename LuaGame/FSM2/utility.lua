@@ -25,8 +25,10 @@ m.instantiate = function(scene)
 		ret = EntMan:CreateEntity(entity)
 		table.insert(scene_instance, ret)
 		for component, comp_data in pairs(ent_data) do
-			print ("component " .. component)		
-			if component == "visual" then
+			print ("component " .. component)
+			if component == "tag" then
+				ret:SetTag(comp_data)			
+			elseif component == "visual" then
 				visual = EntMan:CreateRenderComponent(comp_data.width, comp_data.height, comp_data.color[1], comp_data.color[2], comp_data.color[3])			
 				RenderMan:Add(visual)
 				ret:AddComponent(visual)

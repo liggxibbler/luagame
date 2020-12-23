@@ -6,6 +6,11 @@
 namespace ECS
 {
 	EntityManager::EntityManager() {}
+	EntityManager::~EntityManager()
+	{
+		for (auto entiter = m_entities.begin(); entiter != m_entities.end(); ++entiter)
+			delete* entiter;
+	}
 
 	void EntityManager::Initialize()
 	{

@@ -50,12 +50,26 @@ namespace Game
 	{
 		SDL_UpdateWindowSurface(m_sdlWindow);
 	}
+
+	Vector2 RenderManager::GetScreenSize()
+	{
+		return Vector2(m_width, m_height);
+	}
+	
+	void RenderManager::SetScreenSize(int w, int h)
+	{
+		m_width = w;
+		m_height = h;
+	}
+
 	void RenderManager::RegisterWithLua(lua_State* L)
 	{
 		luabridge::getGlobalNamespace(L)
 			.beginNamespace("Game")
 				.beginClass<RenderManager>("RenderManager")
 					.addFunction("Add", &RenderManager::AddRenderComponent)
+					.addFunction("GetScreenSize", &RenderManager::GetScreenSize)
+					.addFunction("SetScreenSize", &RenderManager::SetScreenSize)
 				.endClass()
 			.endNamespace();
 	}

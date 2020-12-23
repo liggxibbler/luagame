@@ -26,10 +26,10 @@ void LuaComponent::Update()
 		m_luaBrain["update"](m_luaBrain);
 }
 
-void LuaComponent::OnCollision(Vector2 point)
+void LuaComponent::OnCollision(ECS::Entity* other, Vector2 point)
 {
 	if (!m_luaBrain.isNil())
-		m_luaBrain["OnCollision"](m_luaBrain, point);
+		m_luaBrain["OnCollision"](m_luaBrain, other, point);
 }
 
 void LuaComponent::OnStart()

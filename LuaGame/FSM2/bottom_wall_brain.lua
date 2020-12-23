@@ -15,7 +15,7 @@ wall.update = function(self)
 	--self.entity:SetPosition(self.x, self.y)
 end
 
-wall.OnCollision = function(self, point)
+wall.OnCollision = function(other, self, point)
 	_G.GameController:LostBall()
 end
 

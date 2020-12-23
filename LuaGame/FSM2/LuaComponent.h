@@ -17,7 +17,7 @@ public:
 	ECS::ComponentType GetType() override;
 
 	virtual void Update();
-	virtual void OnCollision(Vector2 point);
+	virtual void OnCollision(ECS::Entity* other, Vector2 point);
 	virtual void OnStart();
 
 private:

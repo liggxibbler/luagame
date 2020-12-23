@@ -21,14 +21,21 @@ ball.states =
 
 ball.state = 0
 
-ball.OnCollision = function(self, point)
+ball.OnCollision = function(self, other, point)
 	--if other:is("bottom_wall") then
 	--	GameController:OnLoseBall()
 	--else
 		--point = collision:getPoint()
 		--pos = self.entity:getPosition()
-
-		if math.abs(point.y) > math.abs(point.x) then
+		if other:GetTag() == "Paddle" then
+			print ("HIT PADDLE")
+			spos = self.entity:GetPosition()
+			ppos = other:GetPosition()
+			dx = ppos.x - spos.x
+			print ("dy = " .. tostring(dy))
+			self.vx = -self.vx_default * dx * .1
+			self.vy = -self.vy
+		elseif math.abs(point.y) > math.abs(point.x) then
 			self.vy = -self.vy
 		else
 			self.vx = -self.vx

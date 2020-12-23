@@ -24,7 +24,7 @@ paddle.update = function(self)
 	self.entity:SetPosition(new_pos[1], 235)--new_pos[2])
 end
 
-paddle.OnCollision = function(self, point)
+paddle.OnCollision = function(other, self, point)
 	--print (point.x, point.y)
 end
 

@@ -11,6 +11,7 @@ namespace ECS
 	{
 	public:
 		EntityManager();
+		~EntityManager();
 
 		void Initialize();
 

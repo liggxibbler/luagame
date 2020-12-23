@@ -2,6 +2,7 @@ scene =
 {
 	paddle =
 	{
+		tag = "Paddle",
 		visual =
 		{
 			width = 50,

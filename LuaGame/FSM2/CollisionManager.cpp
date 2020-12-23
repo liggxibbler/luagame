@@ -58,11 +58,11 @@ namespace Game
 
 			//std::cout << "from " << first->GetEntity()->GetName() << ": ";
 			Vector2 one2two = GetCollisionPoint(first->GetRect(), second->GetRect());
-			first->GetEntity()->OnCollision(one2two);
+			first->GetEntity()->OnCollision(second->GetEntity(), one2two);
 			//std::cout << ", from " << second->GetEntity()->GetName() << ": ";
 			Vector2 two2one = GetCollisionPoint(second->GetRect(), first->GetRect());
 			//std::cout << std::endl;
-			second->GetEntity()->OnCollision(two2one);
+			second->GetEntity()->OnCollision(first->GetEntity(), two2one);
 		}
 	}
 

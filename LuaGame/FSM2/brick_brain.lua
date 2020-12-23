@@ -15,7 +15,7 @@ paddle.update = function(self)
 	--self.entity:SetPosition(self.x, self.y)
 end
 
-paddle.OnCollision = function(self, point)
+paddle.OnCollision = function(self, other, point)
 	self.entity:SetActive(false)
 end
 

@@ -155,6 +155,7 @@
     <None Include="bottom_wall_brain.lua" />
     <None Include="brick.lua" />
     <None Include="class.lua" />
+    <None Include="class_base.lua" />
     <None Include="game_controller.lua" />
     <None Include="main.lua" />
     <None Include="miner_states.lua" />
@@ -181,10 +182,6 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BucklandEntity.h" />
-    <ClInclude Include="BucklandMiner.h" />
-    <ClInclude Include="BucklandStateMachine.h" />
-    <ClInclude Include="BucklandUtility.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />

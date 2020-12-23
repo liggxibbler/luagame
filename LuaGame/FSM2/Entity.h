@@ -17,6 +17,7 @@ namespace ECS
 		Entity(Entity& other);
 
 		Entity(std::string name);
+		~Entity();
 
 		void AddComponent(Component* c);
 
@@ -30,12 +31,14 @@ namespace ECS
 		void SetPosition(float x, float y);
 
 		void Update();
-		void OnCollision(Vector2 point);
+		void OnCollision(Entity* other, Vector2 point);
 		void OnStart();
 
 		void SetActive(bool state);
 		bool IsActive();
 
+		std::string GetTag();
+		void SetTag(std::string tag);
 	public:
 		static void RegisterWithLua(lua_State* L);
 
@@ -45,5 +48,6 @@ namespace ECS
 		std::string m_name;
 		std::vector<Component*> m_components;
 		std::unordered_map<std::string, LuaComponent*> m_luaComponentMap;
+		std::string m_tag;
 	};
 }

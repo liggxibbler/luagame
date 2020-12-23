@@ -25,6 +25,12 @@ namespace ECS
 		m_components.push_back(m_transform);
 	}
 
+	Entity::~Entity()
+	{
+		for (auto compiter = m_components.begin(); compiter != m_components.end(); ++compiter)
+			delete* compiter;
+	}
+
 	void Entity::AddComponent(Component* c)
 	{
 		c->SetEntity(this);
@@ -68,13 +74,13 @@ namespace ECS
 			(*itercmp)->Update();
 	}
 
-	void Entity::OnCollision(Vector2 point)
+	void Entity::OnCollision(Entity* other, Vector2 point)
 	{
 		for (auto luaiter = m_components.begin(); luaiter != m_components.end(); ++luaiter)
 		{
 			if ((*luaiter)->GetType() == ComponentType_Lua)
 			{
-				((LuaComponent*)(*luaiter))->OnCollision(point);
+				((LuaComponent*)(*luaiter))->OnCollision(other, point);
 			}
 		}
 	}
@@ -96,6 +102,16 @@ namespace ECS
 		return m_isActive;
 	}
 
+	std::string Entity::GetTag()
+	{
+		return m_tag;
+	}
+
+	void Entity::SetTag(std::string tag)
+	{
+		m_tag = tag;
+	}
+
 	void Entity::RegisterWithLua(lua_State* L)
 	{
 		luabridge::getGlobalNamespace(L)
@@ -112,6 +128,8 @@ namespace ECS
 					.addFunction("OnStart", &Entity::OnStart)
 					.addFunction("IsActive", &Entity::IsActive)
 					.addFunction("SetActive", &Entity::SetActive)
+					.addFunction("SetTag", &Entity::SetTag)
+					.addFunction("GetTag", &Entity::GetTag)
 				.endClass()
 			.endNamespace();
 	}
